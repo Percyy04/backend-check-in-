@@ -15,10 +15,15 @@ const requiredEnvVars = [
   'FIREBASE_CLIENT_EMAIL'
 ];
 
-// Validate: Check xem có thiếu biến nào không
+// Validate: Check xem có thiếu biến nào không (chỉ warn, không throw trong production)
 requiredEnvVars.forEach(varName => {
   if (!process.env[varName]) {
-    throw new Error(`❌ Missing required environment variable: ${varName}`);
+    const errorMsg = `❌ Missing required environment variable: ${varName}`;
+    if (process.env.NODE_ENV === 'production') {
+      console.warn(`⚠️  ${errorMsg} - Please set in Render dashboard`);
+    } else {
+      throw new Error(errorMsg);
+    }
   }
 });
 
