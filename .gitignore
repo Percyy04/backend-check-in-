@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+logs/
+*.log
+.DS_Store
+firebase-debug.log
+build/
+dist/
+gala-brosis-check-in-firebase-adminsdk-fbsvc-da92b52ff5.json
